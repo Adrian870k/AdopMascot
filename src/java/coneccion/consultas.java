@@ -5,6 +5,7 @@
  */
 package coneccion;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -50,38 +51,41 @@ public class consultas extends conexion {
     }
 
     public boolean registrar(String nombre, int edad, int documento, int telefono, String correo, String password) {
-        PreparedStatement pst = null;
-        try {
-            String consulta = "insert into usuario (nombre,edad,documento,telefono,correo,password) values(?,?,?,?,?,?)";
-            pst = getConnection().prepareStatement(consulta);
-            //pst.setInt(1, id);
-            pst.setString(1, nombre);
-            pst.setInt(2, edad);
-            pst.setInt(3, documento);
-            pst.setInt(4, telefono);
-            pst.setString(5, correo);
-            pst.setString(6, password);
-
-            if (pst.executeUpdate() == 1) {
-                return true;
-            }
-
-        } catch (Exception e) {
-            System.err.println("error" + e);
-        } finally {
+        Connection pruebaCon = conexion.getConnection();
+        if (pruebaCon != null) {
             try {
-                if (getConnection() != null) {
-                    getConnection().close();
-                }
-                if (pst != null) {
-                    pst.close();
+                PreparedStatement pst;
+                pst = getConnection().prepareStatement("insert into soulmate.usuario (nombre,edad,documento,telefono,correo,password) values(?,?,?,?,?,?)");
+                pst.setString(1, nombre);
+                pst.setInt(2, edad);
+                pst.setInt(3, documento);
+                pst.setInt(4, telefono);
+                pst.setString(5, correo);
+                pst.setString(6, password);
+
+                if (pst.executeUpdate() == 1) {
+                    System.out.println("yes");
+                    return true;
                 }
 
             } catch (Exception e) {
-                System.err.println("error" + e);
-            }
-        }
+                System.err.println("error: " + e);
+            } finally {
+                try {
+                    if (getConnection() != null) {
+                        getConnection().close();
+                    }
 
+                } catch (Exception e) {
+                    System.err.println("error" + e);
+                }
+            }
+
+            
+
+        } else {
+            System.out.println("Desconectado");
+        }
         return false;
     }
 
