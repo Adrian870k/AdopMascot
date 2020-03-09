@@ -3,11 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/monto/Desktop/PPI/SoulMate/web/index.jsp</file>
-            <file>file:/C:/Users/monto/Desktop/PPI/SoulMate/web/usuarior.jsp</file>
-            <file>file:/C:/Users/monto/Desktop/PPI/SoulMate/src/java/coneccion/consultas.java</file>
-            <file>file:/C:/Users/monto/Desktop/PPI/SoulMate/web/inicio.jsp</file>
-            <file>file:/C:/Users/monto/Desktop/PPI/SoulMate/src/java/servlet/registrarusuario.java</file>
+            <file>file:/D:/yordan.quintero/Universidad/SM/SoulMate/web/inicio.jsp</file>
+            <file>file:/D:/yordan.quintero/Universidad/SM/SoulMate/src/java/servlet/ControlerIMG.java</file>
+            <file>file:/D:/yordan.quintero/Universidad/SM/SoulMate/src/java/coneccion/mascota.java</file>
+            <file>file:/D:/yordan.quintero/Universidad/SM/SoulMate/web/usuarior.jsp</file>
+            <file>file:/D:/yordan.quintero/Universidad/SM/SoulMate/src/java/coneccion/mascotaDAO.java</file>
         </group>
     </open-files>
 </project-private>

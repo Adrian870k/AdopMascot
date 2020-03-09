@@ -41,7 +41,7 @@ public class mascotaDAO {
                 m.setNombre(rs.getString(2));
                 m.setEspecie(rs.getString(3));
                 m.setEdad(rs.getInt(4));
-                m.setFoto(rs.getBinaryStream(5));
+                m.setFoto(rs.getString(5));
                 m.setDescripcion(rs.getString(6));
                 m.setVacuna(rs.getString(7));
                 m.setTelefono(rs.getInt(8));
@@ -93,7 +93,7 @@ public class mascotaDAO {
             ps.setString(1, m.getNombre());
             ps.setString(2, m.getEspecie());
             ps.setInt(3, m.getEdad());
-            ps.setBlob(4, m.getFoto());
+            ps.setString(4, m.getFoto());
             ps.setString(5, m.getDescripcion());
             ps.setString(6, m.getVacuna());
             ps.setInt(7, m.getTelefono());

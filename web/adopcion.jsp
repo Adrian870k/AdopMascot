@@ -132,7 +132,7 @@
                                                     <form action="Controler" method="POST" enctype="multipart/form-data">
                                                         <ul>
                                                             Foto:
-                                                            <li><input type="file" placeholder="Foto de la mascota" name="foto"/></li><br>
+                                                            <li><input type="file" placeholder="Foto de la mascota" type ="text" name="foto"/></li><br>
                                                             Nombre:
                                                             <li><input type="text" placeholder="Nombre" name="nombre"></li><br>
                                                             Especie:

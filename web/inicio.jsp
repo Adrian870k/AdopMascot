@@ -114,8 +114,8 @@
                         <li><a href="index.jsp">Inicio</a></li>
                         <li><a href="mailto:montoyaquinadrian@gmail.com">informar errores</a></li>
                         <li class="active"><a href="#">Mascotas en espera por ser adoptadas</a></li>
-                        
-                         <!--<li><a href="proceso.jsp">Mascotas en proceso de adopción</a></li>-->
+
+                        <!--<li><a href="proceso.jsp">Mascotas en proceso de adopción</a></li>-->
 
 
                     </ul>
@@ -141,30 +141,15 @@
 
                         </div>
                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     <form action="Controler" method="POST">
                         <input type="submit" name="accion" value="Listar">
-                        
+
                     </form>
                     <c:forEach var="dato" items="${lista}">
                         <div class="products-slick" data-nav="#slick-nav-2">
                             <div class="product">
                                 <div class="product-img">
                                     <img src="ControlerIMG?id=${dato.getId()}" width="300" height="120">
-
                                 </div>
                                 <div class="product-body">
                                     <h1>${dato.getNombre()}</h1>
@@ -174,7 +159,7 @@
                                         <li><strong>Edad: </strong>${dato.getEdad()}</li>
                                         <li><strong>Vacunas: </strong>${dato.getVacuna()}</li>
                                         <li><strong>Teléfono: </strong>3008341594</li>
-                                       
+
 
                                     </ul>
                                 </div>
@@ -183,9 +168,6 @@
                                 </div>
                             </div>
                         </div>
-                        <br>
-                        <br>
-
 
                     </c:forEach>
 

@@ -16,7 +16,7 @@ public class mascota {
     String nombre;
     String especie;
     int edad;
-    InputStream foto;
+    String foto;
     String descripcion;
     String vacuna;
     int telefono;
@@ -26,7 +26,7 @@ public class mascota {
         
     }
 
-    public mascota(int id, String nombre, String especie, int edad, InputStream foto, String descripcion, String vacuna,int telefono,String correo) {
+    public mascota(int id, String nombre, String especie, int edad, String foto, String descripcion, String vacuna,int telefono,String correo) {
         this.id = id;
         this.nombre = nombre;
         this.especie = especie;
@@ -89,11 +89,11 @@ public class mascota {
         this.edad = edad;
     }
 
-    public InputStream getFoto() {
+    public String getFoto() {
         return foto;
     }
 
-    public void setFoto(InputStream foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
     }
 
