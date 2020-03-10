@@ -149,7 +149,7 @@
                         <div class="products-slick" data-nav="#slick-nav-2">
                             <div class="product">
                                 <div class="product-img">
-                                    <img src="ControlerIMG?id=${dato.getId()}" width="300" height="120">
+                                    <img src="./imagenesSubidas/${dato.getFoto()}" value = "${dato.getFoto()}"width="300" height="120">
                                 </div>
                                 <div class="product-body">
                                     <h1>${dato.getNombre()}</h1>

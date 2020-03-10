@@ -81,6 +81,7 @@ public class Controler extends HttpServlet {
                 break;
             case "Enviar":
                 String rutaNombreArchivo= "";
+                String nombreImagen = "";
                 try {
                     Part ParteDelArchivo = request.getPart("foto");
                     String fileName = Paths.get(ParteDelArchivo.getSubmittedFileName()).getFileName().toString();
@@ -91,8 +92,8 @@ public class Controler extends HttpServlet {
                     Calendar calendar = Calendar.getInstance();
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyMMddHHmmss");
                     String Hrc = simpleDateFormat.format(calendar.getTime());
-                    String nombreImagen = "NV"+Hrc+"."+extension[1]; 
-                     rutaNombreArchivo = "D:\\yordan.quintero\\Universidad\\SM\\SoulMate\\web\\imagenesSubidas\\" + nombreImagen;
+                    nombreImagen = "NV"+Hrc+"."+extension[1]; 
+                     rutaNombreArchivo = "C:/workspace/SoulMate/web/imagenesSubidas/" + nombreImagen;
                     OutputStream os = new BufferedOutputStream(new FileOutputStream(new File(rutaNombreArchivo)));
                     byte[] chunk = new byte[CHUNK_SIZE];
                     int bytesLeidos = 0;
@@ -118,7 +119,8 @@ public class Controler extends HttpServlet {
                 m.setDescripcion(descripcion);
                 m.setEdad(Integer.parseInt(edad));
                 m.setEspecie(especie);
-                m.setFoto(rutaFoto);
+                System.out.println("Ruta papa : "+nombreImagen);
+                m.setFoto(nombreImagen);
                 m.setNombre(nom);
                 m.setVacuna(vacuna);
                 m.setTelefono(Integer.parseInt(telefono));
