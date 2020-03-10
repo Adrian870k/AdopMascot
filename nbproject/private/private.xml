@@ -4,10 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/yordan.quintero/Universidad/SM/SoulMate/web/inicio.jsp</file>
-            <file>file:/D:/yordan.quintero/Universidad/SM/SoulMate/src/java/servlet/ControlerIMG.java</file>
-            <file>file:/D:/yordan.quintero/Universidad/SM/SoulMate/src/java/coneccion/mascota.java</file>
-            <file>file:/D:/yordan.quintero/Universidad/SM/SoulMate/web/usuarior.jsp</file>
-            <file>file:/D:/yordan.quintero/Universidad/SM/SoulMate/src/java/coneccion/mascotaDAO.java</file>
+            <file>file:/D:/yordan.quintero/Universidad/SM/SoulMate/web/adopcion.jsp</file>
+            <file>file:/D:/yordan.quintero/Universidad/SM/SoulMate/web/css/style.css</file>
+            <file>file:/D:/yordan.quintero/Universidad/SM/SoulMate/src/java/servlet/Controler.java</file>
         </group>
     </open-files>
 </project-private>

@@ -80,20 +80,20 @@ public class Controler extends HttpServlet {
                 request.getRequestDispatcher("adopcion.jsp").forward(request, response);
                 break;
             case "Enviar":
-                String rutaNombreArchivo= "";
+                String rutaNombreArchivo = "";
                 String nombreImagen = "";
                 try {
                     Part ParteDelArchivo = request.getPart("foto");
                     String fileName = Paths.get(ParteDelArchivo.getSubmittedFileName()).getFileName().toString();
-                    System.out.println("kevin "+fileName);
+                    System.out.println("kevin " + fileName);
                     String extension[];
                     extension = fileName.split("\\.");
                     InputStream fileContent = ParteDelArchivo.getInputStream();
                     Calendar calendar = Calendar.getInstance();
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyMMddHHmmss");
                     String Hrc = simpleDateFormat.format(calendar.getTime());
-                    nombreImagen = "NV"+Hrc+"."+extension[1]; 
-                     rutaNombreArchivo = "C:/workspace/SoulMate/web/imagenesSubidas/" + nombreImagen;
+                    nombreImagen = "NV" + Hrc + "." + extension[1];
+                    rutaNombreArchivo = "./imagenesSubidas/" + nombreImagen;
                     OutputStream os = new BufferedOutputStream(new FileOutputStream(new File(rutaNombreArchivo)));
                     byte[] chunk = new byte[CHUNK_SIZE];
                     int bytesLeidos = 0;
@@ -119,7 +119,7 @@ public class Controler extends HttpServlet {
                 m.setDescripcion(descripcion);
                 m.setEdad(Integer.parseInt(edad));
                 m.setEspecie(especie);
-                System.out.println("Ruta papa : "+nombreImagen);
+                System.out.println("Ruta papa : " + nombreImagen);
                 m.setFoto(nombreImagen);
                 m.setNombre(nom);
                 m.setVacuna(vacuna);
@@ -128,38 +128,8 @@ public class Controler extends HttpServlet {
                 dao.agregar(m);
                 request.getRequestDispatcher("Controler?accion=Listar").forward(request, response);
                 break;
-
-            case "Subir Foto":
-                try {
-                    FileDialog dialogoArchivo;
-                    Frame frame = null;
-
-                    dialogoArchivo = new FileDialog(frame, "Lista de Archivos desde Frame", FileDialog.LOAD);
-                    dialogoArchivo.setVisible(true);
-                    String rutaTotal = "";
-                    if (dialogoArchivo.getFile() != null) { /* Validar que se haya Seleccionado un Archivo */
-
-                        String directorio = dialogoArchivo.getDirectory();
-                        String nombreArchivo = dialogoArchivo.getFile();
-                        rutaTotal = directorio + nombreArchivo;
-                        System.out.println(rutaTotal);
-                    } else {
-                        System.out.println("No Seleccionó Archivo");
-                    }
-//                File miDir = new File("imagenesSubidas");
-//                String dirCar = miDir.getCanonicalPath().toString()+"\\";
-//                File source = new File(rutaTotal);
-//                File dest = new File(dirCar+"imagenFInal.png");
-//
-//                copyFile(source, dest);
-                } catch (Exception e) {
-                    System.out.println("Error: " + e);
-                }
-
-                break;
             default:
                 request.getRequestDispatcher("Controler?accion=Listar").forward(request, response);
-
                 break;
         }
 
