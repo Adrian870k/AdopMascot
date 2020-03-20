@@ -16,38 +16,38 @@ import java.sql.ResultSet;
 public class consultas extends conexion {
 
     public boolean autenticacion(String correo, String password) {
-//        PreparedStatement pst = null;
-//
-//        ResultSet rs = null;
-//        try {
-//            String consulta = "select * from usuario where correo = ? and password = ?";
-//            pst = getConnection().prepareStatement(consulta);
-//            pst.setString(1, correo);
-//            pst.setString(2, password);
-//            rs = pst.executeQuery();
-//
-//            if (rs.next()) {
-//                return true;
-//            }
-//        } catch (Exception e) {
-//            System.err.print("Error" + e);
-//        } finally {
-//            try {
-//                if (getConnection() != null) {
-//                    getConnection().close();
-//                }
-//                if (pst != null) {
-//                    pst.close();
-//                }
-//                if (rs != null) {
-//                    rs.close();
-//                }
-//            } catch (Exception e) {
-//                System.err.print("Error" + e);
-//            }
-//        }
+        PreparedStatement pst = null;
 
-        return true;
+        ResultSet rs = null;
+        try {
+            String consulta = "select * from usuario where correo = ? and password = ?";
+            pst = getConnection().prepareStatement(consulta);
+            pst.setString(1, correo);
+            pst.setString(2, password);
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                return true;
+            }
+        } catch (Exception e) {
+            System.err.print("Error" + e);
+        } finally {
+            try {
+                if (getConnection() != null) {
+                    getConnection().close();
+                }
+                if (pst != null) {
+                    pst.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (Exception e) {
+                System.err.print("Error" + e);
+            }
+        }
+
+        return false;
     }
 
     public boolean registrar(String nombre, int edad, int documento, int telefono, String correo, String password) {

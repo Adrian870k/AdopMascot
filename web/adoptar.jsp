@@ -104,7 +104,7 @@
         <div>
             <center>
                 <h1>SoulMate</h1>
-                <h1>Llene los campos para confirmar.</h1>
+                <h1>Complete los campos para confirmar.</h1>
                 <form action="verificacion" method="POST">
 
                     <div class="contenedor-inputs">

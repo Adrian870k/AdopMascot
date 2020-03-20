@@ -37,6 +37,8 @@
 
 
 
+
+
     </head>
     <body>
 
@@ -145,41 +147,53 @@
                         <input type="submit" name="accion" value="Listar">
 
                     </form>
-                    <c:forEach var="dato" items="${lista}">
-                        <div class="products-slick" data-nav="#slick-nav-2">
-                            <div class="product">
-                                <div class="product-img">
-                                    <img src="./imagenesSubidas/${dato.getFoto()}" value = "${dato.getFoto()}"width="300" height="120">
-                                </div>
-                                <div class="product-body">
-                                    <h1>${dato.getNombre()}</h1>
-                                    <p>${dato.getDescripcion()}</p>
-                                    <ul style="text-align: justify;">
-                                        <li><strong>Especie: </strong>${dato.getEspecie()}</li>
-                                        <li><strong>Edad: </strong>${dato.getEdad()}</li>
-                                        <li><strong>Vacunas: </strong>${dato.getVacuna()}</li>
-                                        <li><strong>Teléfono: </strong>3008341594</li>
 
 
-                                    </ul>
-                                </div>
-                                <div class="add-to-cart">
-                                    <button class="add-to-cart-btn" onclick="location.href = 'adoptar.jsp?#'">¡ADOPTAR!</button>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="products-tabs">
+                                <!-- tab -->
+                                <div id="tab" class="tab-pane active">
+                                    <div class="products-slick" data-nav="#slick-nav-2">
+                                        <c:forEach var="dato" items="${lista}">
+                                            <div class="product">
+                                                <div class="product-img">
+                                                    <img src="./imagenesSubidas/${dato.getFoto()}" value = "${dato.getFoto()}"width="300" height="120">
+                                                </div>
+                                                <div class="product-body">
+                                                    <h1>${dato.getNombre()}</h1>
+                                                    <p>${dato.getDescripcion()}</p>
+                                                    <ul style="text-align: justify;">
+                                                        <li><strong>Especie: </strong>${dato.getEspecie()}</li>
+                                                        <li><strong>Edad: </strong>${dato.getEdad()}</li>
+                                                        <li><strong>Vacunas: </strong>${dato.getVacuna()}</li>
+                                                        <li><strong>Teléfono: </strong>3008341594</li>
+
+
+                                                    </ul>
+                                                </div>
+                                                <div class="add-to-cart">
+                                                    <button class="add-to-cart-btn" onclick="location.href = 'adoptar.jsp?#'">¡ADOPTAR!</button>
+                                                </div>
+                                            </div>
+                                        </c:forEach>            
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                    </c:forEach>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/slick.min.js"></script>
+        <script src="js/nouislider.min.js"></script>
+        <script src="js/jquery.zoom.min.js"></script>
+        <script src="js/main.js"></script>
 
 
-                    <script src="js/jquery.min.js"></script>
-                    <script src="js/bootstrap.min.js"></script>
-                    <script src="js/slick.min.js"></script>
-                    <script src="js/nouislider.min.js"></script>
-                    <script src="js/jquery.zoom.min.js"></script>
-                    <script src="js/main.js"></script>
-
-
-                    </body>
-                    </html>
+    </body>
+</html>
 

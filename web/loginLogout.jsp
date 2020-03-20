@@ -13,21 +13,18 @@
     </head>
     <body>
         <form action="" method="POST">
-             
-                <label for="usuario">correo electronico</label>
-                <input type="email" name="correo" value="" required /> <br/>
-                <label for="pass">Contraseña cuenta</label>
-                <input type="password" name="password" value="" required />
-                 
-                 
-               
-                    <input type="submit" value="Enviar" name="enviar" />
-                    <input type="reset" value="Limpiar" name="limpiar" />  
-                
-                  
 
-                <!-- Si el nombre de usuario o password es invalido muestra el sigueinte mensaje -->
-                
-            </form>
+            <label style="color: white" for="usuario">Correo electronico:&nbsp;</label>
+            <input type="email"  name="correo" value="" required /></br>
+            <label style="color: white" for="pass">Contraseña cuenta:&nbsp;</label>
+            <input type="password" name="password"  value="" required />
+            <input type="submit" value="Enviar" name="enviar" />
+            <input type="reset" value="Limpiar" name="limpiar" />
+
+
+
+            <!-- Si el nombre de usuario o password es invalido muestra el sigueinte mensaje -->
+
+        </form>
     </body>
 </html>
