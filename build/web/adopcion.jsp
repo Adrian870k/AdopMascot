@@ -44,6 +44,7 @@
         <header>
 
             <div id="header">
+                <%@include file="userLog.jsp" %>
 
                 <div class="container">
 
@@ -136,7 +137,12 @@
                                                             Nombre:
                                                             <li><input type="text" placeholder="Nombre" name="nombre"></li><br>
                                                             Especie:
-                                                            <li><input type="text" placeholder="Especie" name="especie"></li><br>
+                                                            <li><select type="text" placeholder="Especie" name="especie">
+                                                                    <option value="indefinida">Filtro</option>
+                                                                    <option value="Perro">Perros</option>
+                                                                    <option value="Gato">Gatos</option>
+                                                                </select></li>
+                                                            <br>
                                                             Edad:
                                                             <li><input type="text" placeholder="Edad" name="edad"></li><br>
                                                             Telefono:

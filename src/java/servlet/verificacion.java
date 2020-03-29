@@ -1,13 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlet;
 
 import coneccion.consultas;
+import coneccion.mascota;
+import coneccion.mascotaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,24 +30,17 @@ public class verificacion extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-
         String correo = request.getParameter("correo");
         String password = request.getParameter("pass");
-
         consultas co = new consultas();
-        if (co.autenticacion(correo, password)) {
-
+        if (co.autenticacion(correo, password) != 0) {            
             request.getRequestDispatcher("inicio.jsp").forward(request, response);
-
         } else {
-
-            out.print("  <script>\n"
-                    + "alert('¡Error! devuelvete');\n"
-                    + "</script>");
-
-            //  <a data-toggle="tab" href="#tab1"> <button  class="btn-abrir-popup" onclick="location.href = 'usuario.jsp?#'">Iniciar sesión</button></a>
+            out.write("Usuario no existe o datos ingresados erroneos");
         }
+        
     }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

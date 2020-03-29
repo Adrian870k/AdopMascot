@@ -21,12 +21,13 @@ public class mascota {
     String vacuna;
     int telefono;
     String correo;
+    int id_dueño;
 
     public mascota() {
         
     }
 
-    public mascota(int id, String nombre, String especie, int edad, String foto, String descripcion, String vacuna,int telefono,String correo) {
+    public mascota(int id, String nombre, String especie, int edad, String foto, String descripcion, String vacuna,int telefono,String correo,int dueño) {
         this.id = id;
         this.nombre = nombre;
         this.especie = especie;
@@ -36,6 +37,7 @@ public class mascota {
         this.vacuna = vacuna;
         this.telefono = telefono;
         this.correo = correo;
+        this.id_dueño = dueño;
     }
 
     
@@ -111,6 +113,13 @@ public class mascota {
 
     public void setVacuna(String vacuna) {
         this.vacuna = vacuna;
+    }
+     public int getDueño() {
+        return id_dueño;
+    }
+
+    public void setDueño(int dueño) {
+        this.id_dueño = dueño;
     }
     
 }

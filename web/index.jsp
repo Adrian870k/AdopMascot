@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page session = "true"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -70,23 +71,14 @@
                                     <form action="iniciar" method="post">
                                         <div class="contenedor-inputs">
                                             <ul>
-
                                                 <%@include file="loginLogout.jsp" %>
+                                            
                                             </ul>
                                         </div>
-
-
-
                                     </form>
-                                </div><br>
+                                </div>
 
-                                <a data-toggle="tab" href="#tab2"> <button id="btn-abrir-popup" class="btn-abrir-popup" onclick="location.href = 'usuario.jsp?#'">Registrarse</button></a>
-
-
-
-
-
-
+                            </article>
                         </div>
 
                     </div>

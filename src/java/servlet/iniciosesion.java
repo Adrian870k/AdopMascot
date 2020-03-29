@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlet;
 
 import coneccion.consultas;
@@ -13,7 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -21,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class iniciosesion extends HttpServlet {
 
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -29,21 +23,23 @@ public class iniciosesion extends HttpServlet {
 
         String correo = request.getParameter("correo");
         String password = request.getParameter("password");
-
         consultas co = new consultas();
-        if (co.autenticacion(correo, password)) {
+        HttpSession sesion = request.getSession();
+        int id = co.autenticacion(correo, password);
+
+        if (id != 0) {
+            sesion.setAttribute("correo", correo);
+            sesion.setAttribute("password", password);
+            sesion.setAttribute("id", id);
             response.sendRedirect("inicio.jsp");
 
         } else {
-           out.print("  <script>\n"
-                    + "alert('¡Error!');\n"
-                    + "</script>");
-            
-            
-
-            //  <a data-toggle="tab" href="#tab1"> <button  class="btn-abrir-popup" onclick="location.href = 'usuario.jsp?#'">Iniciar sesión</button></a>
+            out.write("<h5>Ususario o contraseña incorrecta</h5>");
         }
-
+        
+        
+        
+    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

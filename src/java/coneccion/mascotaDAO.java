@@ -5,6 +5,7 @@
  */
 package coneccion;
 
+import static coneccion.conexion.getConnection;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.InputStream;
@@ -22,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class mascotaDAO {
 
+    PreparedStatement pst = null;
     conexion cn = new conexion();
 
     Connection con;
@@ -86,7 +88,7 @@ public class mascotaDAO {
     }
 
     public void agregar(mascota m) {
-        String sql = "insert into mascota(nombre,especie,edad,foto,descripcion,vacuna,telefono,correo)values(?,?,?,?,?,?,?,?)";
+        String sql = "insert into mascota(nombre,especie,edad,foto,descripcion,vacuna,telefono,correo,id_persona)values(?,?,?,?,?,?,?,?,?)";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
@@ -97,9 +99,11 @@ public class mascotaDAO {
             ps.setString(5, m.getDescripcion());
             ps.setString(6, m.getVacuna());
             ps.setInt(7, m.getTelefono());
-            ps.setString(8,m.getCorreo());
-            
+            ps.setString(8, m.getCorreo());
+            ps.setInt(9, m.getDueño());
+
             ps.executeUpdate();
+            
 
         } catch (Exception e) {
         }

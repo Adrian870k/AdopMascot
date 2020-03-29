@@ -29,6 +29,7 @@ import javax.servlet.http.Part;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
 /**
@@ -85,7 +86,7 @@ public class Controler extends HttpServlet {
                 try {
                     Part ParteDelArchivo = request.getPart("foto");
                     String fileName = Paths.get(ParteDelArchivo.getSubmittedFileName()).getFileName().toString();
-                    System.out.println("kevin " + fileName);
+                   
                     String extension[];
                     extension = fileName.split("\\.");
                     InputStream fileContent = ParteDelArchivo.getInputStream();
@@ -106,7 +107,7 @@ public class Controler extends HttpServlet {
                 } catch (Exception e) {
                     System.out.println("Error " + e);
                 }
-
+                HttpSession sesion = request.getSession();
                 String nom = request.getParameter("nombre");
                 String descripcion = request.getParameter("descripcion");
                 Object par = request.getParameter("subir");
@@ -116,6 +117,7 @@ public class Controler extends HttpServlet {
                 String telefono = request.getParameter("telefono");
                 String correo = request.getParameter("correo");
                 String rutaFoto = rutaNombreArchivo;
+                String idDueño = sesion.getAttribute("id").toString();
                 m.setDescripcion(descripcion);
                 m.setEdad(Integer.parseInt(edad));
                 m.setEspecie(especie);
@@ -123,13 +125,16 @@ public class Controler extends HttpServlet {
                 m.setNombre(nom);
                 m.setVacuna(vacuna);
                 m.setTelefono(Integer.parseInt(telefono));
-                m.setCorreo(correo);
+                m.setCorreo(correo);            
+                System.out.println("Este es el id: "+idDueño);
+                m.setDueño(Integer.parseInt(idDueño));
                 dao.agregar(m);
                 request.getRequestDispatcher("Controler?accion=Listar").forward(request, response);
                 break;
-            default:
-                request.getRequestDispatcher("Controler?accion=Listar").forward(request, response);
+            case "Ingresar":
+//                request.getRequestDispatcher("Controler?accion=Listar").forward(request, response);
                 break;
+
         }
 
     }
@@ -137,7 +142,7 @@ public class Controler extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
     private static void copyFile(File source, File dest) throws IOException {
         Files.copy(source.toPath(), dest.toPath());

@@ -589,7 +589,7 @@ Producto//mascota
 */
 .product {
     position: relative;
-    margin: 15px 0px;
+    
     -webkit-box-shadow: 0px 0px 0px 0px #E4E7ED, 0px 0px 0px 1px #E4E7ED;
     box-shadow: 0px 0px 0px 0px #E4E7ED, 0px 0px 0px 1px #E4E7ED;
     -webkit-transition: 0.2s all;
@@ -1820,10 +1820,10 @@ body {
 
 .contenedor article .btn-abrir-popup {
 
-    padding: 0 5px;
+    padding: 0 20px;
     margin-bottom: 10px;
-    height: 35px;
-    line-height: 1px;
+    height: 30px;
+    line-height: 10px;
     border: none;
     color: #fff;
     background: #FF0000;
@@ -1839,3 +1839,24 @@ body {
     background: rgba(94,125,227, .9);
 }
 
+.columnasDivididas{
+
+    width:100%;
+    column-count: 5;
+    /* Espacio entre columnas */
+    -moz-column-gap: 10px;
+    -webkit-column-gap: 10px;
+    column-gap: 10px;
+
+
+
+}
+
+
+
+article {
+    /*Evitamos que se corte al cambiar de columna*/
+    break-inside: avoid;
+    page-break-inside: avoid;         
+
+}

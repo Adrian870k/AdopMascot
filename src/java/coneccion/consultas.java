@@ -1,13 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package coneccion;
 
+import com.sun.mail.imap.protocol.ID;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -15,21 +12,25 @@ import java.sql.ResultSet;
  */
 public class consultas extends conexion {
 
-    public boolean autenticacion(String correo, String password) {
+    public int autenticacion(String correo, String password) {
         PreparedStatement pst = null;
+        mascota m = new mascota();
 
         ResultSet rs = null;
+        int id = 0;
         try {
             String consulta = "select * from usuario where correo = ? and password = ?";
+            
             pst = getConnection().prepareStatement(consulta);
             pst.setString(1, correo);
             pst.setString(2, password);
             rs = pst.executeQuery();
 
             if (rs.next()) {
-                return true;
+                id = rs.getInt(1);
+                return id;
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.err.print("Error" + e);
         } finally {
             try {
@@ -47,7 +48,7 @@ public class consultas extends conexion {
             }
         }
 
-        return false;
+        return id;
     }
 
     public boolean registrar(String nombre, int edad, int documento, int telefono, String correo, String password) {
@@ -80,8 +81,6 @@ public class consultas extends conexion {
                     System.err.println("error" + e);
                 }
             }
-
-            
 
         } else {
             System.out.println("Desconectado");

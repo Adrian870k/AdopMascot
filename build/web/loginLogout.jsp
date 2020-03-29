@@ -1,10 +1,8 @@
-<%-- 
-    Document   : newjsp
-    Created on : 18/07/2019, 02:08:28 PM
-    Author     : hp
---%>
-
+<%@page import="coneccion.consultas"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page session="true"%>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,18 +10,17 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="" method="POST">
+        <form action="loginLogout.jsp" method="POST">
 
             <label style="color: white" for="usuario">Correo electronico:&nbsp;</label>
             <input type="email"  name="correo" value="" required /></br>
             <label style="color: white" for="pass">Contraseña cuenta:&nbsp;</label>
             <input type="password" name="password"  value="" required />
-            <input type="submit" value="Enviar" name="enviar" />
-            <input type="reset" value="Limpiar" name="limpiar" />
-
-
-
-            <!-- Si el nombre de usuario o password es invalido muestra el sigueinte mensaje -->
+    
+            <button type="submit" id = "enviar" value="Enviar" name="btnEnviar"  class="btn-abrir-popup">Enviar</button>
+            
+             <button type="reset" id = "limpiar" value="Limpiar" name="limpiar"  class="btn-abrir-popup">Limpiar</button>
+             <button id="btn-abrir-popup"id = "registrar" class="btn-abrir-popup" onclick="location.href = 'usuario.jsp?#'">Registrarse</button>
 
         </form>
     </body>
