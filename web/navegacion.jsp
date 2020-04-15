@@ -1,4 +1,5 @@
 <%@page import="coneccion.consultas"%>
+<%@page session = "true"%>
 <nav id="navigation">
     <!-- container -->
     <div class="container">
@@ -10,17 +11,18 @@
                 <li><a href="mailto:montoyaquinadrian@gmail.com">informar errores</a></li>
                     <%
                         String nom = null;
-                        consultas con = new consultas();
-                        // String correo = request.getParameter("correo");
-
-                        System.out.println("NOMbre: " + nom);
-                        String password = request.getParameter("password");
+                        
+                        if(session.getAttribute("nombre")!= null){
+                            nom = session.getAttribute("nombre").toString();
+                    }
+                       
+                        
                        
                         if (nom != null) {
 
                             // out.print("<li><a href='proceso.jsp'>Mascotas en proceso de adopción</a></li>");
-                            out.print("<li><a href='usuario.jsp'>Mi cuenta</a></li>");
                             out.print("<li><a href='inicio.jsp'>Mascotas en espera por ser adoptadas</a></li>");
+                            out.print("<li><a href='misMascotas.jsp'>Mis mascotas</a></li>");
 
                         }
                     %>      

@@ -1842,7 +1842,7 @@ body {
 .columnasDivididas{
 
     width:100%;
-    column-count: 5;
+    column-count: 4;
     /* Espacio entre columnas */
     -moz-column-gap: 10px;
     -webkit-column-gap: 10px;

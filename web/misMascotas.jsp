@@ -67,9 +67,10 @@
 
 <div class="col-md-12">
     <div class="section-title">
-        <h1 class="title">Mascotas en espera de adopción</h1>
+        <h1 class="title">Mis mascotas</h1>
         <form action="Controler" method="POST">
-            <input type="submit" name="accion" value="Listar">
+            
+            <input type="submit" name="accion" value="ListarMisMascotas">
 
         </form>
 
@@ -83,7 +84,7 @@
     <div class="container">
         <section class="columnasDivididas">
 
-            <c:forEach var="dato" items="${lista}">
+            <c:forEach var="dato" items="${listaMisMascotas}">
                 <article>
                     <div class="product">
                         <a  href='adoptar.jsp?#'>

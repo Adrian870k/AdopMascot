@@ -62,26 +62,7 @@
         </div>
     </div>
 </header>
-<nav id="navigation">
-
-    <div class="container">
-
-        <div id="responsive-nav">
-
-            <ul class="main-nav nav navbar-nav">
-                <li><a href="index.jsp">Inicio</a></li>
-                <li><a href="mailto:montoyaquinadrian@gmail.com">informar errores</a></li>
-                <li class="active"><a href="#">Mascotas en espera por ser adoptadas</a></li>
-
-                <!--<li><a href="proceso.jsp">Mascotas en proceso de adopción</a></li>-->
-
-            </ul>
-
-        </div>
-
-    </div>
-
-</nav>
+<%@include file="navegacion.jsp" %>
 
 
 <div class="col-md-12">

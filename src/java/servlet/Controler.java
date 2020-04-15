@@ -70,12 +70,18 @@ public class Controler extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession sesion = request.getSession();
         String accion = request.getParameter("accion");
         switch (accion) {
             case "Listar":
                 List<mascota> lista = dao.listar();
                 request.setAttribute("lista", lista);
                 request.getRequestDispatcher("inicio.jsp").forward(request, response);
+                break;
+            case "ListarMisMascotas":
+                List<mascota> listaMisMascotas = dao.listarMisMascotas(sesion.getAttribute("id").toString());
+                request.setAttribute("listaMisMascotas", listaMisMascotas);
+                request.getRequestDispatcher("misMascotas.jsp").forward(request, response);
                 break;
             case "Nuevo":
                 request.getRequestDispatcher("adopcion.jsp").forward(request, response);
@@ -86,7 +92,7 @@ public class Controler extends HttpServlet {
                 try {
                     Part ParteDelArchivo = request.getPart("foto");
                     String fileName = Paths.get(ParteDelArchivo.getSubmittedFileName()).getFileName().toString();
-                   
+
                     String extension[];
                     extension = fileName.split("\\.");
                     InputStream fileContent = ParteDelArchivo.getInputStream();
@@ -107,7 +113,7 @@ public class Controler extends HttpServlet {
                 } catch (Exception e) {
                     System.out.println("Error " + e);
                 }
-                HttpSession sesion = request.getSession();
+
                 String nom = request.getParameter("nombre");
                 String descripcion = request.getParameter("descripcion");
                 Object par = request.getParameter("subir");
@@ -125,8 +131,8 @@ public class Controler extends HttpServlet {
                 m.setNombre(nom);
                 m.setVacuna(vacuna);
                 m.setTelefono(Integer.parseInt(telefono));
-                m.setCorreo(correo);            
-                System.out.println("Este es el id: "+idDueño);
+                m.setCorreo(correo);
+                System.out.println("Este es el id: " + idDueño);
                 m.setDueño(Integer.parseInt(idDueño));
                 dao.agregar(m);
                 request.getRequestDispatcher("Controler?accion=Listar").forward(request, response);

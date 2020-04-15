@@ -58,6 +58,34 @@ public class mascotaDAO {
         return lista;
     }
 
+    public List listarMisMascotas(String id) {
+        List<mascota> lista = new ArrayList<>();
+        String sql = "select * from soulmate.mascota where id_persona = '"+id+"'";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                mascota m = new mascota();
+                m.setId(rs.getInt(1));
+                m.setNombre(rs.getString(2));
+                m.setEspecie(rs.getString(3));
+                m.setEdad(rs.getInt(4));
+                m.setFoto(rs.getString(5));
+                m.setDescripcion(rs.getString(6));
+                m.setVacuna(rs.getString(7));
+                m.setTelefono(rs.getInt(8));
+                m.setCorreo(rs.getString(9));
+
+                lista.add(m);
+
+            }
+        } catch (Exception e) {
+            System.err.println("error");
+        }
+        return lista;
+    }
+    
     public void listarIMG(int id, HttpServletResponse response) {
         String sql = "select * from mascota where id = " + id;
         InputStream inputStream = null;
