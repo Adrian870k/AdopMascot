@@ -32,7 +32,7 @@ public class mascotaDAO {
 
     public List listar() {
         List<mascota> lista = new ArrayList<>();
-        String sql = "select * from mascota";
+        String sql = "select * from soulmate.mascota";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);

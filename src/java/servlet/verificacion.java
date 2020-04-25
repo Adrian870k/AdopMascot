@@ -35,9 +35,7 @@ public class verificacion extends HttpServlet {
         consultas co = new consultas();
         if (co.autenticacion(correo, password) != 0) {            
             request.getRequestDispatcher("inicio.jsp").forward(request, response);
-        } else {
-            out.write("Usuario no existe o datos ingresados erroneos");
-        }
+        } 
         
     }
     

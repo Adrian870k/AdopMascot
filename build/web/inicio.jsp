@@ -48,7 +48,7 @@
                                         <option value="1">Perros</option>
                                         <option value="1">Gatos</option>
                                     </select>
-                                    <button id="btn-abrir-popup" class="btn-abrir-popup" onclick="location.href = 'adopcion.jsp?#'">Dar en adopción.</button>
+                                    <button id="btn-abrir-popup" class="btn-abrir-popup" name = "darAdopcion" onclick="location.href = 'adopcion.jsp?#'">Dar en adopción.</button>
 
                                 </article>
                             </div>

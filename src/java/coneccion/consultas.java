@@ -14,8 +14,6 @@ public class consultas extends conexion {
 
     public int autenticacion(String correo, String password) {
         PreparedStatement pst = null;
-        mascota m = new mascota();
-
         ResultSet rs = null;
         int id = 0;
         try {

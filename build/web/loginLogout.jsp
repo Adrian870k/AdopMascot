@@ -16,12 +16,17 @@
             <input type="email"  name="correo" value="" required /></br>
             <label style="color: white" for="pass">Contraseña cuenta:&nbsp;</label>
             <input type="password" name="password"  value="" required />
-    
-            <button type="submit" id = "enviar" value="Enviar" name="btnEnviar"  class="btn-abrir-popup">Enviar</button>
-            
-             <button type="reset" id = "limpiar" value="Limpiar" name="limpiar"  class="btn-abrir-popup">Limpiar</button>
-             <button id="btn-abrir-popup"id = "registrar" class="btn-abrir-popup" onclick="location.href = 'usuario.jsp?#'">Registrarse</button>
+
+            <button type="submit" id = "enviar" value="Enviar" name="btnEnviar" onclick="advertencia" class="btn-abrir-popup">Enviar</button>
+
+            <button type="reset" id = "limpiar" value="Limpiar" name="limpiar"  class="btn-abrir-popup">Limpiar</button>
+            <button id="btn-abrir-popup"id = "registrar" class="btn-abrir-popup" onclick="location.href = 'usuario.jsp?#'">Registrarse</button>
 
         </form>
+        <script>
+            function advertencia() {
+                alert("usuario o contraseña inconrrecta");
+        </script>
+        }
     </body>
 </html>

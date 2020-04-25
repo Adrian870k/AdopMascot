@@ -113,29 +113,33 @@ public class Controler extends HttpServlet {
                 } catch (Exception e) {
                     System.out.println("Error " + e);
                 }
+                try {
+                    String nom = request.getParameter("nombre");
+                    String descripcion = request.getParameter("descripcion");
+                    String edad = request.getParameter("edad");
+                    String vacuna = request.getParameter("vacuna");
+                    String especie = request.getParameter("especie");
+                    String telefono = request.getParameter("telefono");
+                    String correo = request.getParameter("correo");
+                    String idDueño = sesion.getAttribute("id").toString();
+                    m.setDescripcion(descripcion);
+                    m.setEdad(Integer.parseInt(edad));
+                    m.setEspecie(especie);
+                    m.setFoto(nombreImagen);
+                    m.setNombre(nom);
+                    m.setVacuna(vacuna);
+                    m.setTelefono(Integer.parseInt(telefono));
+                    m.setCorreo(correo);
+                    System.out.println("Este es el id: " + idDueño);
+                    m.setDueño(Integer.parseInt(idDueño));
+                    dao.agregar(m);
+                    Thread.sleep(10000);
+                    request.getRequestDispatcher("Controler?accion=Listar").forward(request, response);
+                    
+                } catch (Exception e) {
+                    System.out.println("Error en la inserción: " + e);
+                }
 
-                String nom = request.getParameter("nombre");
-                String descripcion = request.getParameter("descripcion");
-                Object par = request.getParameter("subir");
-                String edad = request.getParameter("edad");
-                String vacuna = request.getParameter("vacuna");
-                String especie = request.getParameter("especie");
-                String telefono = request.getParameter("telefono");
-                String correo = request.getParameter("correo");
-                String rutaFoto = rutaNombreArchivo;
-                String idDueño = sesion.getAttribute("id").toString();
-                m.setDescripcion(descripcion);
-                m.setEdad(Integer.parseInt(edad));
-                m.setEspecie(especie);
-                m.setFoto(nombreImagen);
-                m.setNombre(nom);
-                m.setVacuna(vacuna);
-                m.setTelefono(Integer.parseInt(telefono));
-                m.setCorreo(correo);
-                System.out.println("Este es el id: " + idDueño);
-                m.setDueño(Integer.parseInt(idDueño));
-                dao.agregar(m);
-                request.getRequestDispatcher("Controler?accion=Listar").forward(request, response);
                 break;
             case "Ingresar":
 //                request.getRequestDispatcher("Controler?accion=Listar").forward(request, response);

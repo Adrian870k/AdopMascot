@@ -34,7 +34,10 @@ public class iniciosesion extends HttpServlet {
             response.sendRedirect("inicio.jsp");
 
         } else {
-            out.write("<h5>Ususario o contraseña incorrecta</h5>");
+
+            //response.sendRedirect("index.jsp");
+            
+            out.write("<script> alert(\"usuario o contraseña incorrecta\"); location.href=\"index.jsp\";  </script>");
         }
         
         

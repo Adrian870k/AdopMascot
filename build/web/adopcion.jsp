@@ -126,36 +126,42 @@
                                 <div id="tab1" class="tab-pane fade in active">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div>
+                                            <center>
 
                                                 <h1>Datos de la mascota.</h1>
                                                 <div class="contenedor-inputs">
                                                     <form action="Controler" method="POST" enctype="multipart/form-data">
                                                         <ul>
-                                                            Foto:
-                                                            <li><input type="file" placeholder="Foto de la mascota" type ="text" name="foto"/></li><br>
-                                                            Nombre:
-                                                            <li><input type="text" placeholder="Nombre" name="nombre"></li><br>
-                                                            Especie:
-                                                            <li><select type="text" placeholder="Especie" name="especie">
-                                                                    <option value="indefinida">Filtro</option>
-                                                                    <option value="Perro">Perros</option>
-                                                                    <option value="Gato">Gatos</option>
-                                                                </select></li>
-                                                            <br>
-                                                            Edad:
-                                                            <li><input type="text" placeholder="Edad" name="edad"></li><br>
-                                                            Telefono:
-                                                            <li><input type="text" placeholder="Telefono" name="telefono"></li><br>
-                                                            Correo:
-                                                            <li><input type="text" placeholder="Correo" name="correo"></li><br>
-                                                            Vacunas que tiene:
-                                                            <li><input type="text" placeholder="Vacunas que se le han aplicado a la mascota" name="vacuna"></li><br>
-                                                            Descripcion breve:
-                                                            <li><input type="text" placeholder ="Breve descripción de la mascota" name="descripcion"></li>
+                                                            <Foto:
+                                                                <li><input type="file" id = "fotoSubida"placeholder="Foto de la mascota" type ="text" name="foto"/></li><br>
+                                                                <b>Nombre:</b>
+                                                                <li><input type="text" placeholder="Nombre" name="nombre"></li><br>
 
-                                                        </ul>
-                                                        <input type="submit" class="btn-submit" name="accion" value="Enviar">
+                                                                <b>Especie:</b>
+                                                                <li><select id =listaEspecie" type="text" placeholder="Especie" name="especie">
+                                                                        <option value="indefinida">--Seleccione--</option>
+                                                                        <option class = "val" value="Perro">Perros</option>
+                                                                        <option class = "val" value="Gato">Gatos</option>
+                                                                    </select></li>
+                                                                <br>
+
+                                                                <b>Edad:</b>
+                                                                <li><input type="text" placeholder="Edad" name="edad"></li><br>
+
+                                                                <b>Telefono:</b>
+                                                                <li><input type="text" placeholder="Telefono" name="telefono"></li><br>
+
+                                                                <b>Correo:</b>
+                                                                <li><input type="text" placeholder="Correo" name="correo"></li><br>
+
+                                                                <b>Vacunas que tiene:</b>
+                                                                <li><input type="text" placeholder="Vacunas que se le han aplicado a la mascota" name="vacuna"></li><br>
+
+                                                                <b>Descripcion breve:</b>
+                                                                <li><input type="text" placeholder ="Breve descripción de la mascota" name="descripcion"></li>
+
+                                                        </ul></br>
+                                                        <input type="submit" id= "btnEnviarAdop"class="btn-submit" name="accion" value="Enviar">
                                                     </form>
 
                                                 </div>
@@ -163,7 +169,7 @@
 
 
 
-                                            </div>
+                                            </center>
 
                                         </div>
 
