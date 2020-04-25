@@ -59,17 +59,6 @@
                             </div>
                         </div>
 
-
-                        <div class="contenedor">
-                            <article>
-
-
-
-
-
-
-
-                        </div>
                     </div>
                 </div>
 
@@ -106,18 +95,14 @@
                 <h1>SoulMate</h1>
                 <h1>Complete los campos para confirmar.</h1>
                 <form action="verificacion" method="POST">
-
                     <div class="contenedor-inputs">
                         Correo electronico:<br>
                         <input type="email" placeholder="Correo electronico" name="correo"><br><br>
                             Contraseña:<br>
                         <input type="password" placeholder="Contraseña" name="pass">
                     </div><br>
-                    
                      <a href="mailto:${dato.getCorreo()}">enviar correo</a>
-                    <input type="submit" value="Enviar" name="enviar" />
-                    
-
+                    <input type="submit" value="Enviar" name="enviar" />                  
                 </form>
             </center>
         </div>
