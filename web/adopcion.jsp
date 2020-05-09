@@ -140,8 +140,8 @@
                                                                 <b>Especie:</b>
                                                                 <li><select id =listaEspecie" type="text" placeholder="Especie" name="especie">
                                                                         <option value="indefinida">--Seleccione--</option>
-                                                                        <option class = "val" value="Perro">Perros</option>
-                                                                        <option class = "val" value="Gato">Gatos</option>
+                                                                        <option class = "val" value="1">Perros</option>
+                                                                        <option class = "val" value="2">Gatos</option>
                                                                     </select></li>
                                                                 <br>
 

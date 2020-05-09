@@ -84,13 +84,6 @@
 
                                     <a data-toggle="tab" href="#tab1"> <button  class="btn-abrir-popup" onclick="location.href = 'usuario.jsp?#'">Iniciar sesión</button></a>
                                     <a data-toggle="tab" href="#tab2"> <button id="btn-abrir-popup" class="btn-abrir-popup" onclick="location.href = '#'">Registrarse</button></a>
-
-
-
-
-
-
-
                             </div>
 
                     </div>

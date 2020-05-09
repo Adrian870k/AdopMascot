@@ -15,9 +15,6 @@
                         if(session.getAttribute("nombre")!= null){
                             nom = session.getAttribute("nombre").toString();
                     }
-                       
-                        
-                       
                         if (nom != null) {
 
                             // out.print("<li><a href='proceso.jsp'>Mascotas en proceso de adopción</a></li>");

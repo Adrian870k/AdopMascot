@@ -27,100 +27,67 @@
     <body>
 
         <header>
+            <%@include file="header.jsp" %>
+        </header>
+        <%@include file="navegacion.jsp" %>
 
 
-            <div id="header">
-                <%@include file="userLog.jsp" %>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="header-logo">
-                                <a href="#" class="logo">
-                                    <img src="./img/logo.png" alt="logo">
-                                </a>
-                            </div>
-                        </div>
-                        <div style="text-align: right">
-                            <div class="contenedor">
-                                <article>
-                                    <select id="btn-abrir-popup" class="btn-abrir-popup">
-                                        <option value="0">Filtro</option>
-                                        <option value="1">Perros</option>
-                                        <option value="1">Gatos</option>
-                                    </select>
-                                    <button id="btn-abrir-popup" class="btn-abrir-popup" name = "darAdopcion" onclick="location.href = 'adopcion.jsp?#'">Dar en adopción.</button>
+        <div class="col-md-12">
+            <div class="section-title">
+                <h1 class="title">Mascotas en espera de adopción</h1>
+                <form action="Controler" method="POST">
+                    <input type="submit" name="accion" value="Listar">
 
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="contenedor">
-                    </div>
-                </div>
+                </form>
+
             </div>
 
         </div>
-    </div>
-</header>
-<%@include file="navegacion.jsp" %>
 
 
-<div class="col-md-12">
-    <div class="section-title">
-        <h1 class="title">Mascotas en espera de adopción</h1>
-        <form action="Controler" method="POST">
-            <input type="submit" name="accion" value="Listar">
+        <div class="section">
+            <!-- container -->
+            <div class="container">
+                <section class="columnasDivididas">
 
-        </form>
+                    <c:forEach var="dato" items="${lista}">
+                        <article>
+                            <div class="product">
+                                <a  href='adoptar.jsp?#'>
+                                    <div class="product-img">
+                                        <img src="./imagenesSubidas/${dato.getFoto()}" value = "${dato.getFoto()}"width="300" height="120">
+                                    </div>
+                                    <div class="product-body">
 
-    </div>
+                                        <h1>${dato.getNombre()}</h1>
+                                        <p>${dato.getDescripcion()}</p>
+                                        <ul style="text-align: justify;">
+                                            <li><strong>Especie: </strong>${dato.getEspecie()}</li>
+                                            <li><strong>Edad: </strong>${dato.getEdad()}</li>
+                                            <li><strong>Vacunas: </strong>${dato.getVacuna()}</li>
+                                            <li><strong>Teléfono: </strong>${dato.getTelefono()}</li>
+                                        </ul>
 
-</div>
 
-
-<div class="section">
-    <!-- container -->
-    <div class="container">
-        <section class="columnasDivididas">
-
-            <c:forEach var="dato" items="${lista}">
-                <article>
-                    <div class="product">
-                        <a  href='adoptar.jsp?#'>
-                            <div class="product-img">
-                                <img src="./imagenesSubidas/${dato.getFoto()}" value = "${dato.getFoto()}"width="300" height="120">
+                                    </div>
+                                </a>
                             </div>
-                            <div class="product-body">
-
-                                <h1>${dato.getNombre()}</h1>
-                                <p>${dato.getDescripcion()}</p>
-                                <ul style="text-align: justify;">
-                                    <li><strong>Especie: </strong>${dato.getEspecie()}</li>
-                                    <li><strong>Edad: </strong>${dato.getEdad()}</li>
-                                    <li><strong>Vacunas: </strong>${dato.getVacuna()}</li>
-                                    <li><strong>Teléfono: </strong>${dato.getTelefono()}</li>
-                                </ul>
+                        </article>
+                    </c:forEach>
+                </section>
 
 
-                            </div>
-                        </a>
-                    </div>
-                </article>
-            </c:forEach>
-        </section>
+            </div>
+        </div>
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/slick.min.js"></script>
+        <script src="js/nouislider.min.js"></script>
+        <script src="js/jquery.zoom.min.js"></script>
+        <script src="js/main.js"></script>
 
 
-    </div>
-</div>
-
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/slick.min.js"></script>
-<script src="js/nouislider.min.js"></script>
-<script src="js/jquery.zoom.min.js"></script>
-<script src="js/main.js"></script>
-
-
-</body>
+    </body>
 </html>
 

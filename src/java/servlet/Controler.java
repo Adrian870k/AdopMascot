@@ -71,6 +71,7 @@ public class Controler extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sesion = request.getSession();
+        List<mascota> listaFiltrada;
         String accion = request.getParameter("accion");
         switch (accion) {
             case "Listar":
@@ -135,14 +136,22 @@ public class Controler extends HttpServlet {
                     dao.agregar(m);
                     Thread.sleep(10000);
                     request.getRequestDispatcher("Controler?accion=Listar").forward(request, response);
-                    
+
                 } catch (Exception e) {
                     System.out.println("Error en la inserción: " + e);
                 }
 
                 break;
-            case "Ingresar":
-//                request.getRequestDispatcher("Controler?accion=Listar").forward(request, response);
+            case "FiltrarPerro":
+                listaFiltrada = dao.listaFlitrada(1);
+                request.setAttribute("lista", listaFiltrada);
+                request.getRequestDispatcher("inicio.jsp").forward(request, response);
+                break;
+            case "FiltrarGato":
+                listaFiltrada = dao.listaFlitrada(2);
+                request.setAttribute("lista", listaFiltrada);
+                request.getRequestDispatcher("inicio.jsp").forward(request, response);
+                
                 break;
 
         }
