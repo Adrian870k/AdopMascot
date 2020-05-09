@@ -42,7 +42,7 @@ public class registrarusuario extends HttpServlet {
         consultas co = new consultas();
         if (co.registrar(nombre, Integer.parseInt(edad), Integer.parseInt(documento), Integer.parseInt(telefono), correo, password)) {
             System.out.println("op1");
-            response.sendRedirect("inicio.jsp");
+            request.getRequestDispatcher("Controler?accion=Listar").forward(request, response);
         } else {
             System.out.println("op2");
             response.sendRedirect("usuario.jsp");

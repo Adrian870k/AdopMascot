@@ -31,7 +31,7 @@ public class iniciosesion extends HttpServlet {
             sesion.setAttribute("correo", correo);
             sesion.setAttribute("password", password);
             sesion.setAttribute("id", id);
-            response.sendRedirect("inicio.jsp");
+            request.getRequestDispatcher("Controler?accion=Listar").forward(request, response);
 
         } else {
 
