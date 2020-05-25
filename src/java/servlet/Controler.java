@@ -7,8 +7,6 @@ package servlet;
 
 import coneccion.mascota;
 import coneccion.mascotaDAO;
-import java.awt.FileDialog;
-import java.awt.Frame;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,9 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import javax.servlet.http.HttpSession;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -134,7 +130,7 @@ public class Controler extends HttpServlet {
                     System.out.println("Este es el id: " + idDueño);
                     m.setDueño(Integer.parseInt(idDueño));
                     dao.agregar(m);
-                    Thread.sleep(10000);
+                    Thread.sleep(7000);
                     request.getRequestDispatcher("Controler?accion=Listar").forward(request, response);
 
                 } catch (Exception e) {

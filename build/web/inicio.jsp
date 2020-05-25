@@ -55,7 +55,7 @@
                             <div class="product">
                                 <a  href='adoptar.jsp?#'>
                                     <div class="product-img">
-                                        <img src="./imagenesSubidas/${dato.getFoto()}" value = "${dato.getFoto()}"width="300" height="120">
+                                        <img src="./imagenesSubidas/${dato.getFoto()}" value = "${dato.getFoto()}"width="300" height="220">
                                     </div>
                                     <div class="product-body">
 
