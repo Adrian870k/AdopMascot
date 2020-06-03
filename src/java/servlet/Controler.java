@@ -69,13 +69,14 @@ public class Controler extends HttpServlet {
         HttpSession sesion = request.getSession();
         List<mascota> listaFiltrada;
         String accion = request.getParameter("accion");
+        String idMascota="";
         switch (accion) {
             case "Listar":
                 List<mascota> lista = dao.listar();
                 request.setAttribute("lista", lista);
                 request.getRequestDispatcher("inicio.jsp").forward(request, response);
                 break;
-            case "ListarMisMascotas":
+            case "Listar mis mascotas":
                 List<mascota> listaMisMascotas = dao.listarMisMascotas(sesion.getAttribute("id").toString());
                 request.setAttribute("listaMisMascotas", listaMisMascotas);
                 request.getRequestDispatcher("misMascotas.jsp").forward(request, response);
@@ -97,7 +98,7 @@ public class Controler extends HttpServlet {
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyMMddHHmmss");
                     String Hrc = simpleDateFormat.format(calendar.getTime());
                     nombreImagen = "NV" + Hrc + "." + extension[1];
-                    rutaNombreArchivo = "C:\\workspace\\SoulMate\\web\\imagenesSubidas\\" + nombreImagen;
+                    rutaNombreArchivo = "C:\\IDE\\workspace\\SoulMate\\web\\imagenesSubidas\\" + nombreImagen;
                     OutputStream os = new BufferedOutputStream(new FileOutputStream(new File(rutaNombreArchivo)));
                     byte[] chunk = new byte[CHUNK_SIZE];
                     int bytesLeidos = 0;
@@ -147,9 +148,26 @@ public class Controler extends HttpServlet {
                 listaFiltrada = dao.listaFlitrada(2);
                 request.setAttribute("lista", listaFiltrada);
                 request.getRequestDispatcher("inicio.jsp").forward(request, response);
+
+                break;
+            case "Adoptar mascota":
+                idMascota = request.getParameter("idMascotaAdoptar");
+                List<mascota> listaMascota = dao.mascotaAdoptar(idMascota);
+                System.out.println("D: " + listaMascota.get(0).getNombre());
+                request.setAttribute("listaMascota", listaMascota);
+                request.getRequestDispatcher("adoptar.jsp").forward(request, response);
+
+                break;
+            case "Eliminar mascota":
+                idMascota = request.getParameter("idMascotaAdoptar");
+                dao.mascotaAdoptar(idMascota);
                 
+                
+                
+
                 break;
 
+            //DELETE FROM `soulmate`.`mascota` WHERE (`idMascota` = '187');
         }
 
     }

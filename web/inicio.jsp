@@ -53,24 +53,26 @@
                     <c:forEach var="dato" items="${lista}">
                         <article>
                             <div class="product">
-                                <a  href='adoptar.jsp?#'>
-                                    <div class="product-img">
-                                        <img src="./imagenesSubidas/${dato.getFoto()}" value = "${dato.getFoto()}"width="300" height="220">
-                                    </div>
-                                    <div class="product-body">
+                                <form action="Controler" method="POST" enctype="multipart/form-data">
+                                    <a type ="submit" name ="targetMascota" name="accion" value="adopMascota">
+                                        <div class="product-img">
+                                            <img src="./imagenesSubidas/${dato.getFoto()}" value = "${dato.getFoto()}"width="300" height="220">
+                                        </div>
+                                        <div class="product-body">
 
-                                        <h1>${dato.getNombre()}</h1>
-                                        <p>${dato.getDescripcion()}</p>
-                                        <ul style="text-align: justify;">
-                                            <li><strong>Especie: </strong>${dato.getEspecie()}</li>
-                                            <li><strong>Edad: </strong>${dato.getEdad()}</li>
-                                            <li><strong>Vacunas: </strong>${dato.getVacuna()}</li>
-                                            <li><strong>Teléfono: </strong>${dato.getTelefono()}</li>
-                                        </ul>
-
-
-                                    </div>
-                                </a>
+                                            <h1>${dato.getNombre()}</h1>
+                                            <p>${dato.getDescripcion()}</p>
+                                            <ul style="text-align: justify;">
+                                                <input type ="hidden" value="${dato.getId()}" name="idMascotaAdoptar"></input>
+                                                <li><strong>Especie: </strong>${dato.getEspecie()}</li>
+                                                <li><strong>Edad: </strong>${dato.getEdad()}</li>
+                                                <li><strong>Vacunas: </strong>${dato.getVacuna()}</li>
+                                                <li><strong>Teléfono: </strong>${dato.getTelefono()}</li>
+                                                <li><input type="submit" id= "btnEnviarAdop"class="btn-submit" name="accion" value="Adoptar mascota"></li>
+                                            </ul>
+                                        </div>
+                                    </a>
+                                </form>
                             </div>
                         </article>
                     </c:forEach>
@@ -79,6 +81,8 @@
 
             </div>
         </div>
+
+
 
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>

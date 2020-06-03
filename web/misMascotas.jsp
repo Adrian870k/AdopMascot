@@ -39,7 +39,7 @@
                 <h1 class="title">Mis mascotas</h1>
                 <form action="Controler" method="POST">
 
-                    <input type="submit" name="accion" value="ListarMisMascotas">
+                    <input type="submit" name="accion" value="Listar mis mascotas">
 
                 </form>
 
@@ -58,7 +58,7 @@
                             <div class="product">
                                 <a  href='adoptar.jsp?#'>
                                     <div class="product-img">
-                                        <img src="./imagenesSubidas/${dato.getFoto()}" value = "${dato.getFoto()}"width="300" height="120">
+                                        <img src="./imagenesSubidas/${dato.getFoto()}" value = "${dato.getFoto()}"width="300" height="220">
                                     </div>
                                     <div class="product-body">
 
@@ -69,6 +69,8 @@
                                             <li><strong>Edad: </strong>${dato.getEdad()}</li>
                                             <li><strong>Vacunas: </strong>${dato.getVacuna()}</li>
                                             <li><strong>Teléfono: </strong>${dato.getTelefono()}</li>
+                                            
+                                            <li><input type="submit" id= "btnEnviarAdop"class="btn-submit" name="accion" value="Eliminar mascota"></li>
                                         </ul>
 
 

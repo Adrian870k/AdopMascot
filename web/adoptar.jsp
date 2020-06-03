@@ -3,7 +3,7 @@
     Created on : 14/07/2019, 01:45:08 PM
     Author     : hp
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,7 +79,7 @@
                     <ul class="main-nav nav navbar-nav">
                         <li><a href="index.jsp">Inicio</a></li>
                         <li><a href="inicio.jsp">Mascotas en espera por ser adoptadas</a></li>
-                       <!--<li><a href="proceso.jsp">Mascotas en proceso de adopción</a></li>-->
+                        <!--<li><a href="proceso.jsp">Mascotas en proceso de adopción</a></li>-->
 
 
                     </ul>
@@ -89,24 +89,62 @@
             </div>
 
         </nav>
+        <div class="col-md-12">
+            <div class="section-title">
+                <h1 class="title">Quiero adoptar</h1>
+                <form action="Controler" method="POST">
 
-        <div>
-            <center>
-                <h1>SoulMate</h1>
-                <h1>Complete los campos para confirmar.</h1>
-                <form action="verificacion" method="POST">
-                    <div class="contenedor-inputs">
-                        Correo electronico:<br>
-                        <input type="email" placeholder="Correo electronico" name="correo"><br><br>
-                            Contraseña:<br>
-                        <input type="password" placeholder="Contraseña" name="pass">
-                    </div><br>
-                     <a href="mailto:${dato.getCorreo()}">enviar correo</a>
-                    <input type="submit" value="Enviar" name="enviar" />                  
+                    <input type="submit" name="accion" value="adopMascota">
+
                 </form>
-            </center>
+
+            </div>
+
         </div>
-   
+        <div class="section">
+            <div class="container">
+
+
+                <c:forEach var="dato" items= "${listaMascota}">
+
+                    <div style="float: left">
+                        <img src="./imagenesSubidas/${dato.getFoto()}" value = "${dato.getFoto()}"width="300" height="220">
+
+                        <div class="product-body">
+
+                            <h1>${dato.getNombre()}</h1>
+                            <p>${dato.getDescripcion()}</p>
+                            <ul style="text-align: justify;">
+                                <input type ="hidden" value="${dato.getId()}" name="idMascotaAdoptar"></input>
+                                <li><strong>Especie: </strong>${dato.getEspecie()}</li>
+                                <li><strong>Edad (años): </strong>${dato.getEdad()}</li>
+                                <li><strong>Vacunas: </strong>${dato.getVacuna()}</li>
+                                <li><strong>Teléfono: </strong>${dato.getTelefono()}</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+
+                        <center>
+                            <h1>SoulMate</h1>
+                            <h1>Complete los campos para confirmar.</h1>
+                            <form action="verificacion" method="POST">
+                                <div class="contenedor-inputs">
+                                    Correo electronico:<br>
+                                    <input type="email" placeholder="Correo electronico" name="correo"><br><br>
+                                    Contraseña:<br>
+                                    <input type="password" placeholder="Contraseña" name="pass">
+                                </div><br>
+                                <a href="mailto:${dato.getCorreo()}">enviar correo</a>
+                                <input type="submit" value="Enviar" name="enviar" />                  
+                            </form>
+                        </center>
+                    </div>
+
+                </c:forEach>
+            </div>
+        </div>
 
 
 
@@ -115,17 +153,19 @@
 
 
 
-<!--PLUGINS -->
-
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/slick.min.js"></script>
-<script src="js/nouislider.min.js"></script>
-<script src="js/jquery.zoom.min.js"></script>
-<script src="js/main.js"></script>
-<script src="js/popup.js"></script>
 
 
+        <!--PLUGINS -->
 
-</body>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/slick.min.js"></script>
+        <script src="js/nouislider.min.js"></script>
+        <script src="js/jquery.zoom.min.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/popup.js"></script>
+
+
+
+    </body>
 </html>
