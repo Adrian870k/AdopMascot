@@ -36,8 +36,11 @@
             <div class="section-title">
                 <h1 class="title">Mascotas en espera de adopción</h1>
                 <form action="Controler" method="POST">
-                    <input type="submit" name="accion" value="Listar">
-
+                    <div class="contenedor">
+                        <article>
+                            <button type="submit" class="btn-abrir-popup" name="accion" value="Listar">Listar las mascotas</buttom>
+                        </article>
+                    </div>
                 </form>
 
             </div>
@@ -68,7 +71,12 @@
                                                 <li><strong>Edad: </strong>${dato.getEdad()}</li>
                                                 <li><strong>Vacunas: </strong>${dato.getVacuna()}</li>
                                                 <li><strong>Teléfono: </strong>${dato.getTelefono()}</li>
-                                                <li><input type="submit" id= "btnEnviarAdop"class="btn-submit" name="accion" value="Adoptar mascota"></li>
+
+                                                <div class="contenedor">
+                                                    <article>
+                                                        <li><input type="submit" class="btn-abrir-popup" id= "btnEnviarAdop"class="btn-submit" name="accion" value="Adoptar mascota"></li>
+                                                    </article>
+                                                </div>
                                             </ul>
                                         </div>
                                     </a>

@@ -161,7 +161,14 @@
                                                                 <li><input type="text" placeholder ="Breve descripción de la mascota" name="descripcion"></li>
 
                                                         </ul></br>
-                                                        <input type="submit" id= "btnEnviarAdop"class="btn-submit" name="accion" value="Enviar">
+
+                                                        <div class="contenedor">
+                                                            <article>
+                                                                <button id= "btnEnviarAdop" class="btn-abrir-popup" name="accion" value="Enviar"> dar adopcion</button>
+                                                                </center>
+                                                            </article>
+                                                        </div>
+
                                                     </form>
 
                                                 </div>

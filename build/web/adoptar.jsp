@@ -92,12 +92,6 @@
         <div class="col-md-12">
             <div class="section-title">
                 <h1 class="title">Quiero adoptar</h1>
-                <form action="Controler" method="POST">
-
-                    <input type="submit" name="accion" value="adopMascota">
-
-                </form>
-
             </div>
 
         </div>
@@ -116,8 +110,10 @@
                             <p>${dato.getDescripcion()}</p>
                             <ul style="text-align: justify;">
                                 <input type ="hidden" value="${dato.getId()}" name="idMascotaAdoptar"></input>
+                                <input type ="hidden" value="${dato.getCorreo()}" name="correoDueño"></input>
                                 <li><strong>Especie: </strong>${dato.getEspecie()}</li>
                                 <li><strong>Edad (años): </strong>${dato.getEdad()}</li>
+                                <li><strong>Correo: </strong>${dato.getCorreo()}</li>
                                 <li><strong>Vacunas: </strong>${dato.getVacuna()}</li>
                                 <li><strong>Teléfono: </strong>${dato.getTelefono()}</li>
 
@@ -129,15 +125,15 @@
                         <center>
                             <h1>SoulMate</h1>
                             <h1>Complete los campos para confirmar.</h1>
-                            <form action="verificacion" method="POST">
+                            <form action="Controler" method="POST">
                                 <div class="contenedor-inputs">
-                                    Correo electronico:<br>
-                                    <input type="email" placeholder="Correo electronico" name="correo"><br><br>
+                                    Correo electronico:<br><input type ="hidden" value="${dato.getCorreo()}" name="correoDueño"></input>
+                                    <input type="email" placeholder="Correo electronico" name="correoConfirm"><br><br>
                                     Contraseña:<br>
-                                    <input type="password" placeholder="Contraseña" name="pass">
+                                    <input type="password" placeholder="Contraseña" name="passwordConfirm">
                                 </div><br>
                                 <a href="mailto:${dato.getCorreo()}">enviar correo</a>
-                                <input type="submit" value="Enviar" name="enviar" />                  
+                                <input type="submit"  name = "accion" value="confirmarAdopcion"/>                  
                             </form>
                         </center>
                     </div>

@@ -5,6 +5,7 @@
  */
 package servlet;
 
+import coneccion.consultas;
 import coneccion.mascota;
 import coneccion.mascotaDAO;
 import java.io.BufferedOutputStream;
@@ -69,7 +70,8 @@ public class Controler extends HttpServlet {
         HttpSession sesion = request.getSession();
         List<mascota> listaFiltrada;
         String accion = request.getParameter("accion");
-        String idMascota="";
+        String idMascota = "";
+        PrintWriter out = response.getWriter();
         switch (accion) {
             case "Listar":
                 List<mascota> lista = dao.listar();
@@ -111,31 +113,40 @@ public class Controler extends HttpServlet {
                 } catch (Exception e) {
                     System.out.println("Error " + e);
                 }
-                try {
-                    String nom = request.getParameter("nombre");
-                    String descripcion = request.getParameter("descripcion");
-                    String edad = request.getParameter("edad");
-                    String vacuna = request.getParameter("vacuna");
-                    String especie = request.getParameter("especie");
-                    String telefono = request.getParameter("telefono");
-                    String correo = request.getParameter("correo");
-                    String idDueño = sesion.getAttribute("id").toString();
-                    m.setDescripcion(descripcion);
-                    m.setEdad(Integer.parseInt(edad));
-                    m.setEspecie(especie);
-                    m.setFoto(nombreImagen);
-                    m.setNombre(nom);
-                    m.setVacuna(vacuna);
-                    m.setTelefono(Integer.parseInt(telefono));
-                    m.setCorreo(correo);
-                    System.out.println("Este es el id: " + idDueño);
-                    m.setDueño(Integer.parseInt(idDueño));
-                    dao.agregar(m);
-                    Thread.sleep(7000);
-                    request.getRequestDispatcher("Controler?accion=Listar").forward(request, response);
+                String nom = request.getParameter("nombre");
+                String descripcion = request.getParameter("descripcion");
+                String edad = request.getParameter("edad");
+                String vacuna = request.getParameter("vacuna");
+                String especie = request.getParameter("especie");
+                String telefono = request.getParameter("telefono");
+                String correo = request.getParameter("correo");
+                String idDueño = sesion.getAttribute("id").toString();
 
-                } catch (Exception e) {
-                    System.out.println("Error en la inserción: " + e);
+                if (nom.equals("") || descripcion.equals("") || edad.equals("") || vacuna.equals("") || especie.equals("") || telefono.equals("") || correo.equals("") || idDueño.equals("") || nombreImagen.equals("")) {
+                    out.write("<script> alert(\"Faltan campos obligatorios\"); window.history.back();  </script>");
+                } else {
+                    if (edad.length() > 3) {
+                        out.write("<script> alert(\"Edad ingresada demasiado largo\"); window.history.back();  </script>");
+                    } else {
+                        try {
+                            m.setDescripcion(descripcion);
+                            m.setEdad(Integer.parseInt(edad));
+                            m.setEspecie(especie);
+                            m.setFoto(nombreImagen);
+                            m.setNombre(nom);
+                            m.setVacuna(vacuna);
+                            m.setTelefono(Integer.parseInt(telefono));
+                            m.setCorreo(correo);
+                            System.out.println("Este es el id: " + idDueño);
+                            m.setDueño(Integer.parseInt(idDueño));
+                            dao.agregar(m);
+                            Thread.sleep(7000);
+                            request.getRequestDispatcher("Controler?accion=Listar").forward(request, response);
+
+                        } catch (Exception e) {
+                            System.out.println("Error en la inserción: " + e);
+                        }
+                    }
                 }
 
                 break;
@@ -158,11 +169,40 @@ public class Controler extends HttpServlet {
                 request.getRequestDispatcher("adoptar.jsp").forward(request, response);
 
                 break;
-            case "Eliminar mascota":
-                idMascota = request.getParameter("idMascotaAdoptar");
-                dao.mascotaAdoptar(idMascota);
+
+            case "confirmarAdopcion":
+                response.setContentType("text/html;charset=UTF-8");
+
+                String correoCon = request.getParameter("correoConfirm");
+                String password = request.getParameter("passwordConfirm");
+                String correoDueño = request.getParameter("correoDueño");
+                System.out.println("Dueño "+correoDueño);
+                //IMPLEMENTAR MAÑANA LO DE ARRIBA
+                consultas co = new consultas();
+
+                if (co.autenticacion(correoCon, password) == Integer.parseInt(sesion.getAttribute("id").toString())) {
+
+                    out.write("<script> location.href = \"mailto:" + correoDueño + "?subject=Deseo adoptar esta mascota\"; location.href = \"inicio.jsp\" </script>");
+                    
+
+                } else {
+
+                    //response.sendRedirect("index.jsp");
+                    out.write("<script> alert(\"Usuario o contraseña incorrecta\"); window.history.back();  </script>");
+                }
+
+                break;
+            case "Eliminar mi mascota":
+                try {
+                    System.out.println("SE DESEA ELIMINAR!!!!!!!!!!!!!!!!");
+                String idMascotaEliminar = request.getParameter("idMascotaAdoptarEL");
+                System.out.println("ID a eliminar " + idMascotaEliminar);
+                dao.eliminarMascota(idMascotaEliminar);
+                request.getRequestDispatcher("Controler?accion=Listar mis mascotas").forward(request, response);
                 
-                
+                } catch (Exception e) {
+                    System.out.println("Error al eliminar :"+e);
+                }
                 
 
                 break;

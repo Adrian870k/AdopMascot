@@ -48,6 +48,8 @@ public class consultas extends conexion {
 
         return id;
     }
+    
+    
 
     public boolean registrar(String nombre, int edad, int documento, int telefono, String correo, String password) {
         Connection pruebaCon = conexion.getConnection();

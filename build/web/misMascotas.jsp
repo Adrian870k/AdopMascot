@@ -39,7 +39,14 @@
                 <h1 class="title">Mis mascotas</h1>
                 <form action="Controler" method="POST">
 
-                    <input type="submit" name="accion" value="Listar mis mascotas">
+
+
+                    <div class="contenedor">
+                        <article>
+                            <input type="submit" class="btn-abrir-popup" name="accion" value="Listar mis mascotas">
+
+                        </article>
+                    </div>
 
                 </form>
 
@@ -56,26 +63,32 @@
                     <c:forEach var="dato" items="${listaMisMascotas}">
                         <article>
                             <div class="product">
-                                <a  href='adoptar.jsp?#'>
-                                    <div class="product-img">
-                                        <img src="./imagenesSubidas/${dato.getFoto()}" value = "${dato.getFoto()}"width="300" height="220">
-                                    </div>
-                                    <div class="product-body">
+                                <form action="Controler" method="POST" enctype="multipart/form-data">
+                                    <a  href='adoptar.jsp?#'>
+                                        <div class="product-img">
+                                            <img src="./imagenesSubidas/${dato.getFoto()}" value = "${dato.getFoto()}"width="300" height="220">
+                                        </div>
+                                        <div class="product-body">
 
-                                        <h1>${dato.getNombre()}</h1>
-                                        <p>${dato.getDescripcion()}</p>
-                                        <ul style="text-align: justify;">
-                                            <li><strong>Especie: </strong>${dato.getEspecie()}</li>
-                                            <li><strong>Edad: </strong>${dato.getEdad()}</li>
-                                            <li><strong>Vacunas: </strong>${dato.getVacuna()}</li>
-                                            <li><strong>Teléfono: </strong>${dato.getTelefono()}</li>
-                                            
-                                            <li><input type="submit" id= "btnEnviarAdop"class="btn-submit" name="accion" value="Eliminar mascota"></li>
-                                        </ul>
+                                            <h1>${dato.getNombre()}</h1>
+                                            <p>${dato.getDescripcion()}</p>
+                                            <ul style="text-align: justify;">
+                                                <input type ="hidden" value="${dato.getId()}" name="idMascotaAdoptarEL"></input>
+                                                <li><strong>Especie: </strong>${dato.getEspecie()}</li>
+                                                <li><strong>Edad: </strong>${dato.getEdad()}</li>
+                                                <li><strong>Vacunas: </strong>${dato.getVacuna()}</li>
+                                                <li><strong>Teléfono: </strong>${dato.getTelefono()}</li>
+                                                <div class="contenedor">
+                                                    <article>
+                                                        <li><input class="btn-abrir-popup" type="submit" id= "btnEnviarAdop"class="btn-submit" name="accion" value="Eliminar mi mascota"></li>
+                                                    </article>
+                                                </div>
+                                            </ul>
 
 
-                                    </div>
-                                </a>
+                                        </div>
+                                    </a>
+                                </form>
                             </div>
                         </article>
                     </c:forEach>

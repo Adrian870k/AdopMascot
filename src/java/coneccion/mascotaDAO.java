@@ -115,6 +115,18 @@ public class mascotaDAO {
         return lista;
     }
     
+    public void eliminarMascota(String id){
+        String sql = "DELETE FROM soulmate.mascota WHERE (`idMascota` = '"+id+"');";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+            
+        } catch (Exception e) {
+            System.out.println("Error al borrar la mascota "+ e);
+        }
+        
+    }    
     public List listarMisMascotas(String id) {
         List<mascota> lista = new ArrayList<>();
         String sql = "select ms.idMascota,ms.nombre,tm.nombre,ms.edad,ms.foto,ms.descripcion,ms.vacuna,ms.telefono,ms.correo,ms.id_persona "

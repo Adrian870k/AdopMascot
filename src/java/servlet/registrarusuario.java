@@ -38,14 +38,33 @@ public class registrarusuario extends HttpServlet {
         String telefono = request.getParameter("telefono");
         String correo = request.getParameter("correo");
         String password = request.getParameter("password");
-
-        consultas co = new consultas();
-        if (co.registrar(nombre, Integer.parseInt(edad), Integer.parseInt(documento), Integer.parseInt(telefono), correo, password)) {
-            System.out.println("op1");
-            request.getRequestDispatcher("Controler?accion=Listar").forward(request, response);
+        if (nombre.equals("") || edad.equals("") || documento.equals("") || password.equals("") || telefono.equals("") || correo.equals("")) {
+            out.write("<script> alert(\"Faltan campos obligatorios\"); window.history.back();  </script>");
         } else {
-            System.out.println("op2");
-            response.sendRedirect("usuario.jsp");
+            if (nombre.length() > 45) {
+                out.write("<script> alert(\"Nombre ingresado demasiado largo\"); window.history.back();  </script>");
+            } else if (edad.length() > 45) {
+                out.write("<script> alert(\"Edad ingresada demasiado largo\"); window.history.back();  </script>");
+            } else if (documento.length() > 15) {
+                out.write("<script> alert(\"Documento ingresado demasiado largo\"); window.history.back();  </script>");
+            } else if (password.length() > 30) {
+                out.write("<script> alert(\"Password ingresado demasiado largo\"); window.history.back();  </script>");
+            } else if (telefono.length() > 11) {
+                out.write("<script> alert(\"Telefono ingresado demasiado largo\"); window.history.back();  </script>");
+            } else if (correo.length() > 45) {
+                out.write("<script> alert(\"Correo ingresado demasiado largo\"); window.history.back();  </script>");
+            } else {
+                consultas co = new consultas();
+
+                if (co.registrar(nombre, Integer.parseInt(edad), Integer.parseInt(documento), Integer.parseInt(telefono), correo, password)) {
+                    System.out.println("op1");
+                    request.getRequestDispatcher("Controler?accion=Listar").forward(request, response);
+                } else {
+                    System.out.println("op2");
+                    response.sendRedirect("usuario.jsp");
+                }
+
+            }
         }
     }
 

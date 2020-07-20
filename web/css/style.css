@@ -243,7 +243,7 @@ textarea.input {
 
 .section {
     padding-top: 30px;
-    padding-bottom: 30px;
+    padding-bottom: 100%;
     background-color: #F9EEC7;
 }
 
@@ -1359,7 +1359,7 @@ Producto//mascota
 
 #product-tab .tab-nav li {
     display: inline-block;
-    background: #FFF;
+    
     padding: 0px 15px;
 }
 
@@ -1860,3 +1860,5 @@ article {
     page-break-inside: avoid;         
 
 }
+
+
