@@ -79,8 +79,21 @@ img {
 .cont-nav {
     display: flex;
     justify-content: space-between;
+    text-align: center;
     align-items: center;
     padding: 3rem 0;
+}
+
+.navegacion a {
+    margin-right: 2rem;
+    font-size: 2rem;
+    text-decoration: none;
+    color: black;
+}
+
+.navegacion a:hover {
+    cursor: pointer;
+    font-size: 2.1rem;
 }
 
 
