@@ -20,7 +20,7 @@ body {
 /* Globales */
 
 .contenedor {
-    width: 95%;
+    width: 100%;
     max-width: 120rem;
     margin: 0 auto 0 auto;
 }
@@ -44,12 +44,6 @@ h4 {
 
 /* Utilidad */
 
-.seccion {
-    /* Separar */
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-}
-
 .centrar {
     text-align: center;
 }
@@ -61,3 +55,39 @@ img {
 .d-block {
     display: block !important;
 }
+
+
+/*------------ HEADER --------- */
+
+.site-header {
+    background-color: #bed1cd;
+}
+
+.contenedor img {
+    max-width: 18rem;
+}
+
+@media (min-width: 480px) {
+    .contenedor img {
+        max-width: 25rem;
+    }
+}
+
+
+/*---------- NAVEGACIÓN ------- */
+
+.cont-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem 0;
+}
+
+
+/*------------ MAIN ---------- */
+
+
+/*---------- ARTICULOS ------- */
+
+
+/*----------- FOOTER --------- */
